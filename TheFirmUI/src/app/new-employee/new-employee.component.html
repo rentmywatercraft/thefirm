@@ -1,0 +1,26 @@
+<form fxFlex fxLayout="column">
+    <div fxFlex fxLayoutAlign="center center">
+        <h1>The Firm - new employee</h1>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center center">
+        <mat-form-field fxFlex>
+            <mat-label>First Name</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <app-job-titles fxFlex="30"></app-job-titles>
+        <mat-checkbox>Is Active</mat-checkbox>
+    </div>
+    <div fxFlex fxLayout="row" fxLayout="center center">
+        <div fxFlex="20"></div>
+        <div fxFlex fxLayout="space-around center">
+            <button fxFlex mat-button fxLayoutAlign="center center" style="padding:5px;">Save</button>
+            <div fxFlex></div>
+            <button fxFlex mat-button routerLink="" fxLayoutAlign="center center" style="padding:5px;">Cancel</button>
+        </div>
+        <div fxFlex="20"></div>
+    </div>
+</form>
