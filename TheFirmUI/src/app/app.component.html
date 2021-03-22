@@ -7,7 +7,7 @@
             <span fxFlex="50px"></span>
             <h1 fxFlex>The Firm</h1>
             <span fxFlex="50px"></span>
-            <div>
+            <div fxHide.lt-sm>
                 <button mat-button [routerLink]="'/home'" routerLinkActive="active-link" > Home </button>
                 <span fxFlex="5px;"></span>
                 <button mat-button [routerLink]="'/new'" routerLinkActive="active-link" > Create Employee </button>
@@ -18,9 +18,9 @@
     <mat-sidenav-container>
         <mat-sidenav #sidenav>
             <mat-nav-list>
-                <a mat-list-item [routerLink]="'/'"> Home </a>
-                <a mat-list-item [routerLink]="'/new'"> Create Employee </a>
-                <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+                <button mat-list-item class="side-menu-item" [routerLink]="'/'"> Home </button>
+                <button mat-list-item class="side-menu-item" [routerLink]="'/new'"> Create Employee </button>
+                <button mat-list-item class="side-menu-item" (click)="sidenav.toggle()" href="" mat-list-item>Close</button>
             </mat-nav-list>
         </mat-sidenav>
         <mat-sidenav-content>

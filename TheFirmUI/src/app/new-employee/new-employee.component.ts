@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Console } from 'console';
 import { EmployeeModel } from 'src/models/employeeModel';
 import { JobTitleModel } from 'src/models/jobTitleModel';
 import { TheFirmService } from '../services/the-firm.service';
