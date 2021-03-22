@@ -11,7 +11,9 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .active-link {
-    background-color: #607d8b;;
+    // background-color: #607d8b;
+    background-color: white;
+    color:black;
 }
 
 .side-menu-item {
