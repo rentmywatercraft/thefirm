@@ -1,9 +1,9 @@
 import { Guid } from "guid-typescript";
 
-export class EmployeeModel {
+export class JobTitleModel {
+    id: Guid
     firstName: string;
     lastName: string;
     isActive: boolean;
-    jobTitleId: Guid;
   }
   

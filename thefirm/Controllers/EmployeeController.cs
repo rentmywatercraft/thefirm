@@ -23,19 +23,31 @@ namespace TheFirm.Controllers
             return _context.Employees.ToArray();
         }
 
+        //[HttpPut]
+        //public void Update(Employee updatedEmployee)
+        //{
+        //    _context.Employees.Update(updatedEmployee);
+        //    _context.SaveChanges();
+        //}
+
         [HttpPut]
-        public void Update(Employee updatedEmployee)
+        public void BulkUpdate(Employee[] updatedEmployees)
         {
-            _context.Employees.Update(updatedEmployee);
+            foreach (var employee in updatedEmployees)
+            {
+                _context.Update(employee);
+            }
             _context.SaveChanges();
         }
 
         [HttpPost]
-        public void Create(Employee newEmployee)
+        public bool Create(Employee newEmployee)
         {
             newEmployee.Id = Guid.NewGuid();
             _context.Employees.Add(newEmployee);
             _context.SaveChanges();
+
+            return true;
         }
     }
 }

@@ -44,4 +44,10 @@ export class TheFirmService {
         return model;
       }).filter(item=>item.isActive===false)))
   };
+
+  createEmployee(newEmp: EmployeeModel) {
+    return this.httpClient.post(endpoint+ "Employee", newEmp).subscribe((result)=>{
+      var tempResult = result;
+    });
+  }
 }

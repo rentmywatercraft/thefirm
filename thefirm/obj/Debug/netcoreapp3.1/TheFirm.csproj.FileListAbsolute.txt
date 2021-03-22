@@ -303,7 +303,6 @@ D:\Jeff\thefirm\TheFirm\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite
 D:\Jeff\thefirm\TheFirm\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Jeff\thefirm\TheFirm\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\Jeff\thefirm\TheFirm\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\Jeff\thefirm\TheFirm\obj\Debug\netcoreapp3.1\TheFirm.csprojAssemblyReference.cache
 D:\Jeff\thefirm\TheFirm\obj\Debug\netcoreapp3.1\TheFirm.AssemblyInfoInputs.cache
 D:\Jeff\thefirm\TheFirm\obj\Debug\netcoreapp3.1\TheFirm.AssemblyInfo.cs
 D:\Jeff\thefirm\TheFirm\obj\Debug\netcoreapp3.1\TheFirm.csproj.CoreCompileInputs.cache
@@ -316,3 +315,4 @@ D:\Jeff\thefirm\TheFirm\obj\Debug\netcoreapp3.1\staticwebassets\TheFirm.StaticWe
 D:\Jeff\thefirm\TheFirm\obj\Debug\netcoreapp3.1\TheFirm.dll
 D:\Jeff\thefirm\TheFirm\obj\Debug\netcoreapp3.1\TheFirm.pdb
 D:\Jeff\thefirm\TheFirm\obj\Debug\netcoreapp3.1\TheFirm.genruntimeconfig.cache
+D:\Jeff\thefirm\TheFirm\obj\Debug\netcoreapp3.1\TheFirm.csprojAssemblyReference.cache

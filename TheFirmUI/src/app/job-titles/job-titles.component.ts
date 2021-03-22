@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { JobTitleModel } from 'src/models/jobTitleModel';
 import { TheFirmService } from '../services/the-firm.service';
 
 @Component({
@@ -9,11 +10,19 @@ import { TheFirmService } from '../services/the-firm.service';
 export class JobTitlesComponent implements OnInit {
   jobTitles: string[];
 
+  selectedItemId: JobTitleModel=null;
+
+  @Output() itemSelected = new EventEmitter<string>();
+
   constructor(public firmService: TheFirmService) { }
 
   ngOnInit() {
     this.firmService.getJobTitles().subscribe((result)=>{
       this.jobTitles = result;
     })
+  }
+
+  itemSelectedEvent() {
+    //this.itemSelected.emit(this.selectedItem.id.toString());
   }
 }

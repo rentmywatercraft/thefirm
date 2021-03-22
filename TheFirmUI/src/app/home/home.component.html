@@ -1,52 +1,47 @@
-<form fxFlex fxLayout="column">
-    <div fxFlex fxLayoutAlign="center center">
-        <h1>The Firm</h1>
-    </div>
+<div fxFlex fxLayout="row" fxLayoutAlign="center">
+    <mat-card fxFlex="90">
+        <mat-card-header>
+            <mat-card-title>Home</mat-card-title>
+        </mat-card-header>
+        <mat-card-content fxLayout="column">
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <mat-form-field fxFlex="40">
+                    <mat-label>Name Filter</mat-label>
+                    <input matInput placeholder="ex. Sam Smith">
+                </mat-form-field>
+                <div fxFlex="10"></div>
+                <app-job-titles fxFlex="40"></app-job-titles>
+            </div>
+            <div fxFlex fxLayout="row" fxLayoutAlign="space-evenly">
+                <div fxFlex="40">
+                    <mat-label>Active Employees</mat-label>
+                    <mat-selection-list>
+                        <mat-list-option *ngFor="let emp of activeEmployees" [value]="emp">
+                                <p>{{emp.firstName}} {{emp.lastName}}</p>
+                        </mat-list-option>
+                    </mat-selection-list>
+                </div>
     
-    <div fxLayout="row" fxLayoutAlign="center center">
-        <mat-form-field fxFlex="30">
-            <mat-label>Name Filter</mat-label>
-            <input matInput placeholder="ex. Sam Smith">
-        </mat-form-field>
-        <div fxFlex="5"></div>
-        <app-job-titles fxFlex="30"></app-job-titles>
-    </div>
-    <div fxFlex fxLayout="row" fxLayoutAlign="space-evenly">
-        <div fxFlex="40">
-            <mat-label>Active Employees</mat-label>
-            <mat-selection-list>
-                <mat-list-option *ngFor="let emp of activeEmployees" >
-                        <p>{{emp.firstName}} {{emp.lastName}}</p>
-                </mat-list-option>
-            </mat-selection-list>
-        </div>
-
-        <div fxFlex="10" fxLayout="column">
-            <button mat-button fxFlex style="margin:5px;"><mat-icon>skip_next</mat-icon></button>
-            <button mat-button fxFlex style="margin:5px;"><mat-icon>play_arrow</mat-icon></button>
-            <button mat-button fxFlex style="margin:5px;"><mat-icon style="transform: rotate(180deg)">play_arrow</mat-icon></button>
-            <button mat-button fxFlex style="margin:5px;"><mat-icon>skip_previous</mat-icon></button>
-        </div>
-
-        <div fxFlex="40">
-            <mat-label>Inactive Employees</mat-label>
-            <mat-selection-list>
-                <mat-list-option *ngFor="let emp of inactiveEmployees">
-                    {{emp.firstName}} {{emp.lastName}}
-                </mat-list-option>
-            </mat-selection-list>
-        </div>
-    </div>
-    <div fxFlex fxLayout="row" fxLayout="center center" >
-        <div fxFlex="40" fxLayout="center center">
-            <button mat-button fxLayoutAlign="center center" style="padding:5px;" routerLink="new">Add Employee</button>
-        </div>
-        <div fxFlex></div>
-        <div fxFlex="40" fxLayout="space-around center">
-            <button fxFlex mat-button fxLayoutAlign="center center" style="padding:5px;">Save</button>
-            <div fxFlex></div>
-            <button fxFlex mat-button fxLayoutAlign="center center" style="padding:5px;">Cancel</button>
-        </div>
-    </div>
+                <div fxFlex="10" fxLayout="column">
+                    <button mat-raised-button color="accent" fxFlex style="margin:5px;"><mat-icon>skip_next</mat-icon></button>
+                    <button mat-raised-button fxFlex style="margin:5px;"><mat-icon>play_arrow</mat-icon></button>
+                    <button mat-raised-button fxFlex style="margin:5px;"><mat-icon style="transform: rotate(180deg)">play_arrow</mat-icon></button>
+                    <button mat-raised-button color="accent" fxFlex style="margin:5px;"><mat-icon>skip_previous</mat-icon></button>
+                </div>
     
-</form>
+                <div fxFlex="40">
+                    <mat-label>Inactive Employees</mat-label>
+                    <mat-selection-list>
+                        <mat-list-option *ngFor="let emp of inactiveEmployees" [value]="emp">
+                            {{emp.firstName}} {{emp.lastName}}
+                        </mat-list-option>
+                    </mat-selection-list>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary">Save</button>
+            <button mat-raised-button routerLink="">Cancel</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

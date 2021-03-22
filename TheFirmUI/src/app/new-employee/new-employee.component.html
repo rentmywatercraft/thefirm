@@ -1,26 +1,30 @@
-<form fxFlex fxLayout="column">
-    <div fxFlex fxLayoutAlign="center center">
-        <h1>The Firm - new employee</h1>
-    </div>
-    <div fxLayout="column" fxLayoutAlign="center center">
-        <mat-form-field fxFlex>
-            <mat-label>First Name</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Last Name</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <app-job-titles fxFlex="30"></app-job-titles>
-        <mat-checkbox>Is Active</mat-checkbox>
-    </div>
-    <div fxFlex fxLayout="row" fxLayout="center center">
-        <div fxFlex="20"></div>
-        <div fxFlex fxLayout="space-around center">
-            <button fxFlex mat-button fxLayoutAlign="center center" style="padding:5px;">Save</button>
-            <div fxFlex></div>
-            <button fxFlex mat-button routerLink="" fxLayoutAlign="center center" style="padding:5px;">Cancel</button>
-        </div>
-        <div fxFlex="20"></div>
-    </div>
-</form>
+<div fxFlex fxLayout="row" fxLayoutAlign="center">
+    <mat-card fxFlex="90">
+        <mat-card-header>
+            <mat-card-title>Create Employee</mat-card-title>
+        </mat-card-header>
+        <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+                <mat-form-field>
+                    <mat-label>First Name</mat-label>
+                    <input name="txtFirstName" required [(ngModel)]="model.firstName" matInput>
+                    
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Last Name</mat-label>
+                    <input name="txtLastName" required [(ngModel)]="model.lastName" matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Job Title</mat-label>
+                    <mat-select [(ngModel)]="model.jobTitleId" required>
+                        <mat-option [value]="jt.id" *ngFor="let jt of jobTitles">{{jt.title}}</mat-option>
+                    </mat-select>    
+                </mat-form-field>
+                <!-- <app-job-titles fxFlex="30"  jobTitleId  ></app-job-titles> -->
+                <mat-checkbox name="chkActive" [(ngModel)]="model.isActive">Is Active</mat-checkbox>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="saveEmployee()" >Save</button>
+            <button mat-raised-button routerLink="home">Cancel</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
