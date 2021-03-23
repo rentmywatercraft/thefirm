@@ -27,6 +27,21 @@ export class TheFirmService {
     return this.httpClient.get(endpoint + "JobTitle").pipe(map(this.extractData));
   }
  
+  getEmployees(): Observable<EmployeeModel[]>{
+    return this.httpClient.get(endpoint + "Employee").pipe(
+      map((data:any[]) => data.map((item:any)=> {
+        const model = new EmployeeModel();
+        Object.assign(model,item);
+        return model;
+      })));
+  }
+
+  updateEmployees(employees: EmployeeModel[]){
+    return this.httpClient.put(endpoint + "Employee", employees).subscribe((result)=>{
+      var tempResult = result;
+    })
+  }
+
   getActiveEmployees(): Observable<EmployeeModel[]> {
     return this.httpClient.get(endpoint + "Employee").pipe(
       map((data:any[]) => data.map((item:any)=> {

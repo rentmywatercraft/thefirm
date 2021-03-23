@@ -11,13 +11,10 @@ import { TheFirmService } from '../services/the-firm.service';
 })
 export class HomeComponent implements OnInit {
 
+  jobTitles: JobTitleModel[];
   employeesList: EmployeeModel[];
   selectedActiveEmployees: EmployeeModel[];
   selectedInactiveEmployees: EmployeeModel[];
-
-  activeEmployees: EmployeeModel[];
-  inactiveEmployees: EmployeeModel[];
-  jobTitles: JobTitleModel[];
 
   constructor(public firmService: TheFirmService) { }
 
@@ -72,6 +69,10 @@ export class HomeComponent implements OnInit {
     this.employeesList.forEach((emp) => {
       emp.isActive = false;
     });
+  }
+
+  saveEmployees() {
+    this.firmService.updateEmployees(this.employeesList);
   }
 
   getStubbedData() {
