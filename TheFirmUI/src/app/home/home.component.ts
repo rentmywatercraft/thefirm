@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
 
   jobTitles: JobTitleModel[];
   employeesList: EmployeeModel[];
+  nameFilter: string="";
+  selectedJobTitle: JobTitleModel=null;
   selectedActiveEmployees: EmployeeModel[];
   selectedInactiveEmployees: EmployeeModel[];
 
@@ -33,13 +35,17 @@ export class HomeComponent implements OnInit {
 
   getInactiveEmployeesForHeading(title: JobTitleModel) {
     return this.employeesList.filter((emp) => {
-      return emp.jobTitleId === title.id && !emp.isActive;
+      return emp.jobTitleId === title.id && !emp.isActive 
+      && (this.selectedJobTitle == null || this.selectedJobTitle.id == emp.jobTitleId)
+      && (this.nameFilter == "" || emp.lastName.toLowerCase().includes(this.nameFilter.toLowerCase())|| emp.firstName.toLowerCase().includes(this.nameFilter.toLowerCase()));
     }).sort((a, b) => (a.lastName < b.lastName ? -1 : 1));
   }
 
   getActiveEmployeesForHeading(title: JobTitleModel) {
     return this.employeesList.filter((emp) => {
-      return emp.jobTitleId === title.id && emp.isActive;
+      return emp.jobTitleId === title.id && emp.isActive
+       && (this.selectedJobTitle == null || this.selectedJobTitle.id == emp.jobTitleId)
+       && (this.nameFilter == "" || emp.lastName.toLowerCase().includes(this.nameFilter.toLowerCase()) || emp.firstName.toLowerCase().includes(this.nameFilter.toLowerCase()));
     }).sort((a, b) => (a.lastName < b.lastName ? -1 : 1));
   }
 

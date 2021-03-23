@@ -10,12 +10,13 @@
                 <h4>Criteria</h4>
                 <mat-form-field>
                     <mat-label>Name Filter</mat-label>
-                    <input matInput placeholder="ex. Sam Smith">
+                    <input matInput placeholder="ex. Sam Smith" [(ngModel)]="nameFilter" >
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Job Title</mat-label>
-                    <mat-select>
-                        <mat-option [value]="jt.id" *ngFor="let jt of jobTitles">{{jt.title}}</mat-option>
+                    <mat-select [(ngModel)]="selectedJobTitle">
+                        <mat-option selected >All</mat-option>
+                        <mat-option [value]="jt" *ngFor="let jt of jobTitles">{{jt.title}}</mat-option>
                     </mat-select>    
                 </mat-form-field>
             </div>
@@ -24,7 +25,7 @@
                     <mat-label>Active Employees</mat-label>
                     <mat-selection-list [(ngModel)]="selectedActiveEmployees">
                         <div *ngFor="let jt of jobTitles">
-                            <h3 matSubheader>{{jt.title}}</h3>
+                            <h3 matSubheader *ngIf="selectedJobTitle == null || jt.id == selectedJobTitle.id">{{jt.title}}</h3>
                             <mat-list-option *ngFor="let emp of getActiveEmployeesForHeading(jt)" [value]="emp">
                                 <p>{{emp.firstName}} {{emp.lastName}}</p>
                             </mat-list-option>
@@ -50,7 +51,7 @@
                     <mat-label>Inactive Employees</mat-label>
                     <mat-selection-list [(ngModel)]="selectedInactiveEmployees">
                         <div *ngFor="let jt of jobTitles">
-                            <h3 matSubheader>{{jt.title}}</h3>
+                            <h3 matSubheader *ngIf="selectedJobTitle == null || jt.id == selectedJobTitle.id">{{jt.title}}</h3>
                             <mat-list-option *ngFor="let emp of getInactiveEmployeesForHeading(jt)" [value]="emp">
                                 {{emp.firstName}} {{emp.lastName}}
                             </mat-list-option>
