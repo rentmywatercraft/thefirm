@@ -26,7 +26,7 @@ export class TheFirmService {
   getJobTitles(): Observable<any> {
     return this.httpClient.get(endpoint + "JobTitle").pipe(map(this.extractData));
   }
-
+ 
   getActiveEmployees(): Observable<EmployeeModel[]> {
     return this.httpClient.get(endpoint + "Employee").pipe(
       map((data:any[]) => data.map((item:any)=> {

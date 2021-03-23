@@ -4,22 +4,27 @@
             <button fxShow.lt-sm fxHide fxFlex="40px;" mat-icon-button>
                 <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
             </button>
-            <div fxHide.lt-sm>
-                <button mat-button [routerLink]="'/home'" routerLinkActive="active-link" > Home </button>
+            <div fxFlex fxHide.lt-sm>
+                <button mat-button [routerLink]="'/home'" routerLinkActive="active-link"> Home </button>
                 <span fxFlex="5px;"></span>
-                <button mat-button [routerLink]="'/new'" routerLinkActive="active-link" > Create Employee </button>
+                <button mat-button [routerLink]="'/new'" routerLinkActive="active-link"> Create Employee </button>
             </div>
-            <div fxFlex fxLayout="column" fxLayoutAlign="center center" >
-                <h1 fxFlex>The Firm</h1>
-            </div>
+            <div fxFlex></div>
+            <h1>The Firm</h1>
         </mat-toolbar-row>
     </mat-toolbar>
     <mat-sidenav-container>
         <mat-sidenav #sidenav>
             <mat-nav-list>
-                <button mat-list-item class="side-menu-item" [routerLink]="'/'"><mat-icon>home</mat-icon>Home</button>
-                <button mat-list-item class="side-menu-item" [routerLink]="'/new'"><mat-icon>person_add</mat-icon>Create Employee</button>
-                <button mat-list-item class="side-menu-item" (click)="sidenav.toggle()" href="" mat-list-item><mat-icon>close</mat-icon>Close</button>
+                <button mat-list-item class="side-menu-item" [routerLink]="'/'">
+                    <mat-icon>home</mat-icon>Home
+                </button>
+                <button mat-list-item class="side-menu-item" [routerLink]="'/new'">
+                    <mat-icon>person_add</mat-icon>Create Employee
+                </button>
+                <button mat-list-item class="side-menu-item" (click)="sidenav.toggle()" href="" mat-list-item>
+                    <mat-icon>close</mat-icon>Close
+                </button>
             </mat-nav-list>
         </mat-sidenav>
         <mat-sidenav-content>

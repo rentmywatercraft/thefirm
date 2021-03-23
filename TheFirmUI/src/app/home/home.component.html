@@ -5,43 +5,56 @@
         </mat-card-header>
         <hr />
         <mat-card-content fxLayout="column" fxLayoutGap="10px">
-            <div fxFlex="100" fxLayout="row" fxLayout.lt-sm="column" style="background-color: beige;" fxLayoutAlign="center center" fxLayoutGap="5px">
-                <h4 fxFlex style="padding-left: 20px;">Criteria</h4>
-                <mat-form-field fxFlex>
+            <div fxFlex="100" fxLayout="row" fxLayout.lt-sm="column" 
+                style="background-color: beige;" fxLayoutAlign="space-evenly center"> 
+                <h4>Criteria</h4>
+                <mat-form-field>
                     <mat-label>Name Filter</mat-label>
                     <input matInput placeholder="ex. Sam Smith">
                 </mat-form-field>
-                <app-job-titles fxFlex></app-job-titles>
+                <mat-form-field>
+                    <mat-label>Job Title</mat-label>
+                    <mat-select>
+                        <mat-option [value]="jt.id" *ngFor="let jt of jobTitles">{{jt.title}}</mat-option>
+                    </mat-select>    
+                </mat-form-field>
             </div>
             <div fxFlex fxLayout="row" fxLayoutAlign="space-evenly" fxLayoutGap="20px">
                 <div fxFlex>
                     <mat-label>Active Employees</mat-label>
-                    <mat-selection-list>
-                        <mat-list-option *ngFor="let emp of activeEmployees" [value]="emp">
-                            <p>{{emp.firstName}} {{emp.lastName}}</p>
-                        </mat-list-option>
+                    <mat-selection-list [(ngModel)]="selectedActiveEmployees">
+                        <div *ngFor="let jt of jobTitles">
+                            <h3 matSubheader>{{jt.title}}</h3>
+                            <mat-list-option *ngFor="let emp of getActiveEmployeesForHeading(jt)" [value]="emp">
+                                <p>{{emp.firstName}} {{emp.lastName}}</p>
+                            </mat-list-option>
+                        </div>
                     </mat-selection-list>
                 </div>
-                <div fxFlex="10" fxLayout="column" fxLayoutAlign="space-evenly">
-                    <button mat-raised-button fxFlex style="margin:5px;" color="accent">
+                <div fxFlex="10" fxLayout="column" fxLayoutGap="20px">
+                    <button mat-raised-button fxFlex="40px" color="accent" (click)="deactivateAllEmployees()">
                         <mat-icon>skip_next</mat-icon>
                     </button>
-                    <button mat-raised-button fxFlex style="margin:5px;">
+                    <button mat-raised-button fxFlex="40px" (click)="deactivateSelectedEmployees()">
                         <mat-icon>play_arrow</mat-icon>
                     </button>
-                    <button mat-raised-button fxFlex style="margin:5px;">
+                    <button mat-raised-button fxFlex="40px" (click)="activateSelectedEmployees()">
                         <mat-icon style="transform: rotate(180deg)">play_arrow</mat-icon>
                     </button>
-                    <button mat-raised-button fxFlex style="margin:5px;" color="accent">
+                    <button mat-raised-button fxFlex="40px" color="accent" (click)="activateAllEmployees()">
                         <mat-icon>skip_previous</mat-icon>
                     </button>
+                    <div fxFlex></div>
                 </div>
                 <div fxFlex>
                     <mat-label>Inactive Employees</mat-label>
-                    <mat-selection-list>
-                        <mat-list-option *ngFor="let emp of inactiveEmployees" [value]="emp">
-                            {{emp.firstName}} {{emp.lastName}}
-                        </mat-list-option>
+                    <mat-selection-list [(ngModel)]="selectedInactiveEmployees">
+                        <div *ngFor="let jt of jobTitles">
+                            <h3 matSubheader>{{jt.title}}</h3>
+                            <mat-list-option *ngFor="let emp of getInactiveEmployeesForHeading(jt)" [value]="emp">
+                                {{emp.firstName}} {{emp.lastName}}
+                            </mat-list-option>
+                        </div>
                     </mat-selection-list>
                 </div>
             </div>
