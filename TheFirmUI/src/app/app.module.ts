@@ -19,11 +19,13 @@ import { MatCheckboxModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card'
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { JobTitlesComponent } from './job-titles/job-titles.component';
 import { HomeComponent } from './home/home.component';
 import { NewEmployeeComponent } from './new-employee/new-employee.component';
-import { HeaderComponent } from './header/header.component'
+import { HeaderComponent } from './header/header.component';
+import { EmployeeListComponent } from './employee-list/employee-list.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { HeaderComponent } from './header/header.component'
     JobTitlesComponent,
     HomeComponent,
     NewEmployeeComponent,
-    HeaderComponent
+    HeaderComponent,
+    EmployeeListComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import { HeaderComponent } from './header/header.component'
     MatSidenavModule,
     MatButtonModule,
     MatCardModule,
+    MatSlideToggleModule
   ],
   exports: [
     MatInputModule,

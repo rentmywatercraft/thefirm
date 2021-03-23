@@ -1,0 +1,38 @@
+<div fxFlex fxLayout="column">
+    <div fxFlex="100" fxLayout="row" style="background-color: beige;"
+        fxLayoutAlign="space-around center">
+        <!-- <h3>Filters</h3> -->
+        <div fxFlex fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="space-around">
+            <mat-form-field>
+                <mat-label>Name Filter</mat-label>
+                <input matInput placeholder="ex. Sam Smith" [(ngModel)]="nameFilter">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Job Title Filter</mat-label>
+                <mat-select [(ngModel)]="selectedJobTitle">
+                    <mat-option selected>All</mat-option>
+                    <mat-option [value]="jt" *ngFor="let jt of jobTitles">{{jt.title}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Active Filter</mat-label>
+                <mat-select [(ngModel)]="activeFilter">
+                    <mat-option [value]="">All</mat-option>
+                    <mat-option [value]="'true'">Active</mat-option>
+                    <mat-option [value]="'false'">Inactive</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div fxFlex fxLayout="column" *ngFor="let jt of jobTitles" class="">
+        <h3 fxFlex *ngIf="selectedJobTitle == null || jt.id == selectedJobTitle.id">{{jt.title}}</h3>
+        <div fxFlex fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="" *ngFor="let emp of getEmployeesForHeading(jt)">
+            <span fxFlex="20px"></span>
+            <span>{{emp.firstName}} {{emp.lastName}}</span>
+            <span fxFlex></span>
+            <mat-slide-toggle [(ngModel)]="emp.isActive">Active</mat-slide-toggle>
+        </div>
+    </div>
+    <hr />
+    <div>
+</div>

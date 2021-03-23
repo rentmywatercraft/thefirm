@@ -13,10 +13,6 @@ export class HomeComponent implements OnInit {
 
   jobTitles: JobTitleModel[];
   employeesList: EmployeeModel[];
-  nameFilter: string="";
-  selectedJobTitle: JobTitleModel=null;
-  selectedActiveEmployees: EmployeeModel[];
-  selectedInactiveEmployees: EmployeeModel[];
 
   constructor(public firmService: TheFirmService) { }
 
@@ -31,50 +27,6 @@ export class HomeComponent implements OnInit {
     // this.firmService.getEmployees().subscribe((result)=>{
     //   this.employeesList = result;
     // });
-  }
-
-  getInactiveEmployeesForHeading(title: JobTitleModel) {
-    return this.employeesList.filter((emp) => {
-      return emp.jobTitleId === title.id && !emp.isActive 
-      && (this.selectedJobTitle == null || this.selectedJobTitle.id == emp.jobTitleId)
-      && (this.nameFilter == "" || emp.lastName.toLowerCase().includes(this.nameFilter.toLowerCase())|| emp.firstName.toLowerCase().includes(this.nameFilter.toLowerCase()));
-    }).sort((a, b) => (a.lastName < b.lastName ? -1 : 1));
-  }
-
-  getActiveEmployeesForHeading(title: JobTitleModel) {
-    return this.employeesList.filter((emp) => {
-      return emp.jobTitleId === title.id && emp.isActive
-       && (this.selectedJobTitle == null || this.selectedJobTitle.id == emp.jobTitleId)
-       && (this.nameFilter == "" || emp.lastName.toLowerCase().includes(this.nameFilter.toLowerCase()) || emp.firstName.toLowerCase().includes(this.nameFilter.toLowerCase()));
-    }).sort((a, b) => (a.lastName < b.lastName ? -1 : 1));
-  }
-
-  activateSelectedEmployees() {
-    this.selectedInactiveEmployees.forEach(element => {
-      this.employeesList.find((emp) => {
-        return emp.firstName == element.firstName && emp.lastName == emp.lastName;
-      }).isActive = true;
-    });
-  }
-
-  activateAllEmployees() {
-    this.employeesList.forEach((emp) => {
-      emp.isActive = true;
-    });
-  }
-
-  deactivateSelectedEmployees() {
-    this.selectedActiveEmployees.forEach(element => {
-      this.employeesList.find((emp) => {
-        return emp.firstName == element.firstName && emp.lastName == emp.lastName;
-      }).isActive = false;
-    });
-  }
-
-  deactivateAllEmployees() {
-    this.employeesList.forEach((emp) => {
-      emp.isActive = false;
-    });
   }
 
   saveEmployees() {
