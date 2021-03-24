@@ -4,18 +4,18 @@
         <!-- <h3>Filters</h3> -->
         <div fxFlex fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="space-around">
             <mat-form-field>
-                <mat-label>Name Filter</mat-label>
+                <mat-label style="margin-left:5px">Name Filter</mat-label>
                 <input matInput placeholder="ex. Sam Smith" [(ngModel)]="nameFilter">
             </mat-form-field>
             <mat-form-field>
-                <mat-label>Job Title Filter</mat-label>
+                <mat-label style="margin-left:5px">Job Title Filter</mat-label>
                 <mat-select [(ngModel)]="selectedJobTitle">
                     <mat-option selected>All</mat-option>
                     <mat-option [value]="jt" *ngFor="let jt of jobTitles">{{jt.title}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field>
-                <mat-label>Active Filter</mat-label>
+                <mat-label style="margin-left:5px">Active Filter</mat-label>
                 <mat-select [(ngModel)]="activeFilter">
                     <mat-option [value]="">All</mat-option>
                     <mat-option [value]="'true'">Active</mat-option>
