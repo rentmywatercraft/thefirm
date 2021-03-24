@@ -30,7 +30,8 @@
         </div>
         <div fxFlex fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="" *ngFor="let emp of getEmployeesForHeading(jt)">
             <span fxFlex="20px"></span>
-            <span fxFlex>{{emp.firstName}} {{emp.lastName}}</span>
+            <span fxFlex [ngStyle]="{'font-weight': (emp.isActive) ? 'bold' : 'normal'}" >{{emp.firstName}} {{emp.lastName}}</span>
+            
             <mat-slide-toggle fxFlex [(ngModel)]="emp.isActive">Active</mat-slide-toggle>
             <span fxFlex fxHide.lt-sm></span>
         </div>
