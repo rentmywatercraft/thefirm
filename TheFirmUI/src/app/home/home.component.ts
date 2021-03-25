@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
 
   saveEmployees() {
     //TODO: Not tested
-    //this.firmService.updateEmployees(this.employeesList);
+    this.firmService.updateEmployees(this.employeesList);
   }
 
   getStubbedData() {
