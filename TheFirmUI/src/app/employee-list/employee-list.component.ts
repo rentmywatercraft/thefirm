@@ -73,4 +73,9 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
+  activateAllEmployees() {
+    this.employeesList.forEach((emp) => {
+      emp.isActive = true;
+    });
+  }
 }
