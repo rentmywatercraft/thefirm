@@ -15,7 +15,7 @@
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Job Title</mat-label>
-                    <mat-select [(ngModel)]="model.jobTitleId" required>
+                    <mat-select name="jobTitle" [(ngModel)]="model.jobTitleId">
                         <mat-option [value]="jt.id" *ngFor="let jt of jobTitles">{{jt.title}}</mat-option>
                     </mat-select>    
                 </mat-form-field>

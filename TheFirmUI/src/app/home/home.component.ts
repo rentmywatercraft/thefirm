@@ -18,19 +18,20 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getStubbedData();
+    //this.getStubbedData();
 
-    // this.firmService.getJobTitles().subscribe((result)=>{
-    //   this.jobTitles = result;
-    // });
+    this.firmService.getJobTitles().subscribe((result)=>{
+      this.jobTitles = result;
+    });
 
-    // this.firmService.getEmployees().subscribe((result)=>{
-    //   this.employeesList = result;
-    // });
+    this.firmService.getEmployees().subscribe((result)=>{
+      this.employeesList = result;
+    });
   }
 
   saveEmployees() {
-    this.firmService.updateEmployees(this.employeesList);
+    //TODO: Not tested
+    //this.firmService.updateEmployees(this.employeesList);
   }
 
   getStubbedData() {

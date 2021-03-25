@@ -14,8 +14,8 @@ export class EmployeeListComponent implements OnInit {
   @Input() jobTitles: JobTitleModel[];
   @Input() employeesList: EmployeeModel[];
   // Filters
-  nameFilter: string="";
-  selectedJobTitle: JobTitleModel=null;
+  nameFilter: string = "";
+  selectedJobTitle: JobTitleModel = null;
   activeFilter: string;
 
   selectedActiveEmployees: EmployeeModel[];
@@ -27,28 +27,34 @@ export class EmployeeListComponent implements OnInit {
   }
 
   getEmployeesForHeading(title: JobTitleModel) {
-    return this.employeesList.filter((emp) => {
-      return emp.jobTitleId === title.id
-      && (this.activeFilter == null || this.activeFilter == 'true' && emp.isActive || this.activeFilter=='false' && !emp.isActive)
-      && (this.selectedJobTitle == null || this.selectedJobTitle.id == emp.jobTitleId)
-      && (this.nameFilter == "" || emp.lastName.toLowerCase().includes(this.nameFilter.toLowerCase())|| emp.firstName.toLowerCase().includes(this.nameFilter.toLowerCase()));
-    }).sort((a, b) => (a.lastName < b.lastName ? -1 : 1));
+    if (this.employeesList) {
+      return this.employeesList.filter((emp) => {
+        return emp.jobTitleId === title.id
+          && (this.activeFilter == null || this.activeFilter == 'true' && emp.isActive || this.activeFilter == 'false' && !emp.isActive)
+          && (this.selectedJobTitle == null || this.selectedJobTitle.id == emp.jobTitleId)
+          && (this.nameFilter == "" || emp.lastName.toLowerCase().includes(this.nameFilter.toLowerCase()) || emp.firstName.toLowerCase().includes(this.nameFilter.toLowerCase()));
+      }).sort((a, b) => (a.lastName < b.lastName ? -1 : 1));
+    }
   }
 
   getActiveEmployeesForHeading(title: JobTitleModel) {
-    return this.employeesList.filter((emp) => {
-      return emp.jobTitleId === title.id && emp.isActive
-       && (this.selectedJobTitle == null || this.selectedJobTitle.id == emp.jobTitleId)
-       && (this.nameFilter == "" || emp.lastName.toLowerCase().includes(this.nameFilter.toLowerCase()) || emp.firstName.toLowerCase().includes(this.nameFilter.toLowerCase()));
-    }).sort((a, b) => (a.lastName < b.lastName ? -1 : 1));
+    if (this.employeesList) {
+      return this.employeesList.filter((emp) => {
+        return emp.jobTitleId === title.id && emp.isActive
+          && (this.selectedJobTitle == null || this.selectedJobTitle.id == emp.jobTitleId)
+          && (this.nameFilter == "" || emp.lastName.toLowerCase().includes(this.nameFilter.toLowerCase()) || emp.firstName.toLowerCase().includes(this.nameFilter.toLowerCase()));
+      }).sort((a, b) => (a.lastName < b.lastName ? -1 : 1));
+    }
   }
 
   getInactiveEmployeesForHeading(title: JobTitleModel) {
-    return this.employeesList.filter((emp) => {
-      return emp.jobTitleId === title.id && !emp.isActive
-       && (this.selectedJobTitle == null || this.selectedJobTitle.id == emp.jobTitleId)
-       && (this.nameFilter == "" || emp.lastName.toLowerCase().includes(this.nameFilter.toLowerCase()) || emp.firstName.toLowerCase().includes(this.nameFilter.toLowerCase()));
-    }).sort((a, b) => (a.lastName < b.lastName ? -1 : 1));
+    if (this.employeesList) {
+      return this.employeesList.filter((emp) => {
+        return emp.jobTitleId === title.id && !emp.isActive
+          && (this.selectedJobTitle == null || this.selectedJobTitle.id == emp.jobTitleId)
+          && (this.nameFilter == "" || emp.lastName.toLowerCase().includes(this.nameFilter.toLowerCase()) || emp.firstName.toLowerCase().includes(this.nameFilter.toLowerCase()));
+      }).sort((a, b) => (a.lastName < b.lastName ? -1 : 1));
+    }
   }
 
   activateSelectedEmployees() {
