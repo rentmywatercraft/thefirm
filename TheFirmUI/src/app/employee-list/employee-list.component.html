@@ -1,7 +1,6 @@
 <div fxFlex fxLayout="column">
     <div fxFlex="100" fxLayout="row" style="background-color: beige;"
         fxLayoutAlign="space-around center">
-        <!-- <h3>Filters</h3> -->
         <div fxFlex fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="space-around">
             <mat-form-field>
                 <mat-label style="margin-left:5px">Name Filter</mat-label>
@@ -14,7 +13,7 @@
                     <mat-option [value]="jt" *ngFor="let jt of jobTitles">{{jt.title}}</mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field fxHide fxShow.lt-sm>
                 <mat-label style="margin-left:5px">Active Filter</mat-label>
                 <mat-select [(ngModel)]="activeFilter">
                     <mat-option [value]="">All</mat-option>
@@ -24,7 +23,48 @@
             </mat-form-field>
         </div>
     </div>
-    <div fxFlex="100" fxLayout="column" *ngFor="let jt of jobTitles" class="">
+    <!-- Larger Devices -->
+    <div fxFlex fxLayout="row" fxHide.lt-sm fxLayoutAlign="space-evenly" fxLayoutGap="20px">
+        <div fxFlex>
+            <mat-label>Active Employees</mat-label>
+            <mat-selection-list [(ngModel)]="selectedActiveEmployees">
+                <div *ngFor="let jt of jobTitles">
+                    <h3 matSubheader>{{jt.title}}</h3>
+                    <mat-list-option *ngFor="let emp of getActiveEmployeesForHeading(jt)" [value]="emp">
+                        <p>{{emp.firstName}} {{emp.lastName}}</p>
+                    </mat-list-option>
+                </div>
+            </mat-selection-list>
+        </div>
+        <div fxFlex="10" fxLayout="column" fxLayoutGap="20px">
+            <button mat-raised-button fxFlex="40px" color="accent" (click)="deactivateAllEmployees()">
+                <mat-icon>skip_next</mat-icon>
+            </button>
+            <button mat-raised-button fxFlex="40px" (click)="deactivateSelectedEmployees()">
+                <mat-icon>play_arrow</mat-icon>
+            </button>
+            <button mat-raised-button fxFlex="40px" (click)="activateSelectedEmployees()">
+                <mat-icon style="transform: rotate(180deg)">play_arrow</mat-icon>
+            </button>
+            <button mat-raised-button fxFlex="40px" color="accent" (click)="activateAllEmployees()">
+                <mat-icon>skip_previous</mat-icon>
+            </button>
+            <div fxFlex></div>
+        </div>
+        <div fxFlex>
+            <mat-label>Inactive Employees</mat-label>
+            <mat-selection-list [(ngModel)]="selectedInactiveEmployees">
+                <div *ngFor="let jt of jobTitles">
+                    <h3 matSubheader>{{jt.title}}</h3>
+                    <mat-list-option *ngFor="let emp of getInactiveEmployeesForHeading(jt)" [value]="emp">
+                        {{emp.firstName}} {{emp.lastName}}
+                    </mat-list-option>
+                </div>
+            </mat-selection-list>
+        </div>
+    </div>
+    <!-- Smaller Devices -->
+    <div fxHide fxShow.lt-sm fxFlex="100" fxLayout="column" *ngFor="let jt of jobTitles" class="">
         <div fxFlex class="header">
             <p style="margin-left:10px;" *ngIf="selectedJobTitle == null || jt.id == selectedJobTitle.id">{{jt.title}}</p>
         </div>
@@ -33,7 +73,6 @@
             <span fxFlex [ngStyle]="{'font-weight': (emp.isActive) ? 'bold' : 'normal'}" >{{emp.firstName}} {{emp.lastName}}</span>
             
             <mat-slide-toggle fxFlex [(ngModel)]="emp.isActive">Active</mat-slide-toggle>
-            <span fxFlex fxHide.lt-sm></span>
         </div>
     </div>
     <hr />
