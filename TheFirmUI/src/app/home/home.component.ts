@@ -29,8 +29,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  reloadEmployees() {
+    this.firmService.getEmployees().subscribe((result)=>{
+      this.employeesList = result;
+    });
+  }
+
   saveEmployees() {
-    //TODO: Not tested
     this.firmService.updateEmployees(this.employeesList);
   }
 

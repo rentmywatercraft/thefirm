@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Guid } from 'guid-typescript';
+import { Router } from '@angular/router';
 import { EmployeeModel } from 'src/models/employeeModel';
 import { JobTitleModel } from 'src/models/jobTitleModel';
 import { TheFirmService } from '../services/the-firm.service';
@@ -16,7 +17,7 @@ export class NewEmployeeComponent implements OnInit {
   jobTitles: JobTitleModel[];
   selectedJobTitle: any;
 
-  constructor(public firmService: TheFirmService) { }
+  constructor(public firmService: TheFirmService, private router: Router) { }
 
   ngOnInit() {
     this.firmService.getJobTitles().subscribe((result)=>{
@@ -31,5 +32,6 @@ export class NewEmployeeComponent implements OnInit {
 
   saveEmployee() {
     this.firmService.createEmployee(this.model);
+    this.router.navigate(['/','home']);
   }
 }
